@@ -50,6 +50,7 @@ print("                                                     ")
 
 print("Добро пожаловать в StrawberryGen!")
 print("Идеи по поводу генератора можете высылать сюда: strawberryboomber@gmail.com")
+print("Ключи скачиваются в файл keys.txt")
 print("                                                     ")
 print("Выберите тип ключа")
 print("1. Steam")
@@ -74,9 +75,21 @@ if keytype == "1" :
         
         steamkeytypecount = 0
         
+        my_file = open('Keys.txt', 'w')
+        
         while steamkeytypecount < steamkeytypeonenumber : 
-            print(steamgen(3))
+            text_for_file = steamgen(3)
+            print(text_for_file)
+            
             steamkeytypecount += 1
+            
+            text_for_file += chr(10) + chr(13)
+            
+            my_file.write(text_for_file)
+        
+             
+             
+        my_file.close()        
         
         
     if steamkeytype == "2" :
@@ -88,10 +101,23 @@ if keytype == "1" :
         
         steamkeytypecount = 0
         
+        my_file = open('Keys.txt', 'w')
+        
+        
         while steamkeytypecount < steamkeytypeonenumber : 
-            print(steamgen(5))
+            text_for_file = steamgen(5)
+            print(text_for_file)
             
-            steamkeytypecount += 1        
+            steamkeytypecount += 1  
+            
+            text_for_file += chr(10) + chr(13)
+            
+            my_file.write(text_for_file)
+        
+             
+             
+        my_file.close()        
+                    
 
     if steamkeytype == "3" :
         print("Введите количество ключей, которое вы хотите сгенерировать")
@@ -102,10 +128,22 @@ if keytype == "1" :
         
         steamkeytypecount = 0
         
+        my_file = open('Keys.txt', 'w')
+        
         while steamkeytypecount < steamkeytypeonenumber : 
-            print(steamgentwo())
+            text_for_file = steamgentwo()
+            print(text_for_file)
             
-            steamkeytypecount += 1          
+            steamkeytypecount += 1   
+            
+            text_for_file += chr(10) + chr(13)
+            
+            my_file.write(text_for_file)
+        
+             
+             
+        my_file.close()        
+                    
     
 
 if keytype == "2" :
@@ -124,9 +162,20 @@ if keytype == "2" :
         
         uplaykeycount = 0
         
+        my_file = open('Keys.txt', 'w')
+        
         while uplaykeycount < uplaykeynumber : 
-            print(uplaygen(4))
+            text_for_file = uplaygen(4)
+            print(text_for_file)
             uplaykeycount += 1  
+            text_for_file += chr(10) + chr(13)
+            
+            my_file.write(text_for_file)
+        
+             
+             
+        my_file.close()        
+                    
             
     if uplaykeytype == "2" :
         print("Введите количество ключей, которое вы хотите сгенерировать")
@@ -137,6 +186,17 @@ if keytype == "2" :
         
         uplaykeycount = 0
         
+        my_file = open('Keys.txt', 'w')
+        
         while uplaykeycount < uplaykeynumber : 
-            print(uplaygentwo(4))
-            uplaykeycount += 1    
+            text_for_file = uplaygentwo(4)
+            print(text_for_file)
+            uplaykeycount += 1   
+            text_for_file += chr(10) + chr(13)
+            
+            my_file.write(text_for_file)
+        
+             
+             
+        my_file.close()        
+                    
