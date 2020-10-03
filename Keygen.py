@@ -25,6 +25,8 @@ def templateinput(keyformat):
     
     steamkeytypeonenumber = input()
     
+    steamkeytypeonenumber = float(steamkeytypeonenumber)
+    
     steamkeytypeonenumber = int(float(steamkeytypeonenumber))
     
     steamkeytypecount = 0
@@ -96,6 +98,9 @@ if keytype == "2" :
         
 if keytype == "3" :
     templateinput("YYY-YYY-YYYY")
+    
+if keytype == "4" :
+    templateinput("ZZZZZ-ZZZZZ-ZZZZZ-ZZZZZ")
 
 if keytype == "9" :
     print("Напишите шаблон")
