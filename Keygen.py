@@ -1,62 +1,68 @@
 # -*- coding: utf-8 -*-
 import random
 import string
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
 
-def steamgen(count):
+def cgenf(str):
+    for c in range(0,len(str)):
+        if str[c] == 'X' or str[c] == 'Y' or str[c] == 'Z':
+            rep = ""
+            if str[c] == 'X':
+                rep = ''.join(random.choices(string.ascii_uppercase, k=1))
+            elif str[c] == 'Y':
+                rep = ''.join(random.choices(string.digits, k=1))
+            elif str[c] == 'Z':
+                rep = ''.join(random.choices(string.ascii_uppercase + string.digits, k=1))
     
-    key = " "
+            str = str[:c] + rep + str[c+1:]
+            
+    return str;
+
+def templateinput(keyformat):
+    print("Введите количество ключей, которое вы хотите сгенерировать")
     
-    while count > 0:
-        key += ''.join(random.choices(string.ascii_uppercase + string.digits, k=5)) + "-"
-        count -= 1
+    steamkeytypeonenumber = input()
+    
+    steamkeytypeonenumber = int(float(steamkeytypeonenumber))
+    
+    steamkeytypecount = 0
+    
+    my_file = open('Keys.txt', 'w')
+    
+    while steamkeytypecount < steamkeytypeonenumber : 
+        text_for_file = cgenf(keyformat)
+        print(text_for_file)
         
-    key = key[:-1]
-    
-    return key
-
-def steamgentwo():
-    key = ''.join(random.choices(string.digits, k=3)) + ''.join(random.choices(string.ascii_uppercase, k=12)) + " " + ''.join(random.choices(string.digits, k=2))
-    
-    return key
-
-def uplaygen(count):
-    
-    key = " "
-    
-    while count > 0:
-        key += ''.join(random.choices(string.ascii_uppercase + string.digits, k=4)) + "-"
-        count -= 1
+        steamkeytypecount += 1
         
-    key = key[:-1]
-    
-    return key
-
-def uplaygentwo(count):
-    
-    key = ''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + "-"
-    
-    while count > 0:
-        key += ''.join(random.choices(string.ascii_uppercase + string.digits, k=4)) + "-"
-        count -= 1
-    
-    key = key[:-1]
-    
-    return key
+        text_for_file += chr(10) + chr(13)
+        
+        my_file.write(text_for_file)
+        
+    my_file.close()
 
 print("                                                     ")
-print("█▀ ▀█▀ █▀█ ▄▀█ █ █ █ █▄▄ █▀▀ █▀█ █▀█ █▄█ █▀▀ █▀▀ █▄ █")
-print("▄█  █  █▀▄ █▀█ ▀▄▀▄▀ █▄█ ██▄ █▀▄ █▀▄  █  █▄█ ██▄ █ ▀█")
+print(Fore.MAGENTA,"█▀ ▀█▀ █▀█ ▄▀█ █ █ █ █▄▄ █▀▀ █▀█ █▀█ █▄█ █▀▀ █▀▀ █▄ █")
+print(Fore.MAGENTA,"▄█  █  █▀▄ █▀█ ▀▄▀▄▀ █▄█ ██▄ █▀▄ █▀▄  █  █▄█ ██▄ █ ▀█")
 print("                                                     ")
-
-print("Добро пожаловать в StrawberryGen!")
-print("Идеи по поводу генератора можете высылать сюда: strawberryboomber@gmail.com")
-print("Ключи скачиваются в файл keys.txt")
+    
+print(Fore.GREEN,"Добро пожаловать в StrawberryGen!")
+print(" Идеи по поводу генератора можете высылать сюда: strawberryboomber@gmail.com")
+print(" Ключи скачиваются в файл keys.txt")
 print("                                                     ")
-print("Выберите тип ключа")
-print("1. Steam")
-print("2. UPlay")
+print(Fore.CYAN,"Выберите тип ключа")
+print(" 1. Steam")
+print(" 2. UPlay")
+print(" 3. Roblox")
+print(" 4. Kaspersky")
+print(" 9. Сделать свой ключ")
+print(" 0. Поддержать проект")
 
 keytype = input()
+
+print(Style.RESET_ALL)
 
 if keytype == "1" : 
     print("Выберите тип ключа Steam")
@@ -67,84 +73,13 @@ if keytype == "1" :
     steamkeytype = input()
     
     if steamkeytype == "1" :
-        print("Введите количество ключей, которое вы хотите сгенерировать")
-        
-        steamkeytypeonenumber = input()
-        
-        steamkeytypeonenumber = int(float(steamkeytypeonenumber))
-        
-        steamkeytypecount = 0
-        
-        my_file = open('Keys.txt', 'w')
-        
-        while steamkeytypecount < steamkeytypeonenumber : 
-            text_for_file = steamgen(3)
-            print(text_for_file)
-            
-            steamkeytypecount += 1
-            
-            text_for_file += chr(10) + chr(13)
-            
-            my_file.write(text_for_file)
-        
-             
-             
-        my_file.close()        
-        
+        templateinput("XXXXX-XXXXX-XXXXX")
         
     if steamkeytype == "2" :
-        print("Введите количество ключей, которое вы хотите сгенерировать")
-        
-        steamkeytypeonenumber = input()
-        
-        steamkeytypeonenumber = int(float(steamkeytypeonenumber))
-        
-        steamkeytypecount = 0
-        
-        my_file = open('Keys.txt', 'w')
-        
-        
-        while steamkeytypecount < steamkeytypeonenumber : 
-            text_for_file = steamgen(5)
-            print(text_for_file)
-            
-            steamkeytypecount += 1  
-            
-            text_for_file += chr(10) + chr(13)
-            
-            my_file.write(text_for_file)
-        
-             
-             
-        my_file.close()        
-                    
+        templateinput("XXXXX-XXXXX-XXXXX-XXXXX-XXXXX")                    
 
     if steamkeytype == "3" :
-        print("Введите количество ключей, которое вы хотите сгенерировать")
-        
-        steamkeytypeonenumber = input()
-        
-        steamkeytypeonenumber = int(float(steamkeytypeonenumber))
-        
-        steamkeytypecount = 0
-        
-        my_file = open('Keys.txt', 'w')
-        
-        while steamkeytypecount < steamkeytypeonenumber : 
-            text_for_file = steamgentwo()
-            print(text_for_file)
-            
-            steamkeytypecount += 1   
-            
-            text_for_file += chr(10) + chr(13)
-            
-            my_file.write(text_for_file)
-        
-             
-             
-        my_file.close()        
-                    
-    
+        templateinput("YYYXXXXXXXXXXXX YY")
 
 if keytype == "2" :
     print("Выберите тип ключа UPlay")
@@ -154,49 +89,22 @@ if keytype == "2" :
     uplaykeytype = input()
     
     if uplaykeytype == "1" :
-        print("Введите количество ключей, которое вы хотите сгенерировать")
+        templateinput("XXXX-XXXX-XXXX-XXXX")
         
-        uplaykeynumber = input()
-        
-        uplaykeynumber = int(float(uplaykeynumber))
-        
-        uplaykeycount = 0
-        
-        my_file = open('Keys.txt', 'w')
-        
-        while uplaykeycount < uplaykeynumber : 
-            text_for_file = uplaygen(4)
-            print(text_for_file)
-            uplaykeycount += 1  
-            text_for_file += chr(10) + chr(13)
-            
-            my_file.write(text_for_file)
-        
-             
-             
-        my_file.close()        
-                    
-            
     if uplaykeytype == "2" :
-        print("Введите количество ключей, которое вы хотите сгенерировать")
+        templateinput("XXX-XXXX-XXXX-XXXX-XXXX")
         
-        uplaykeynumber = input()
-        
-        uplaykeynumber = int(float(uplaykeynumber))
-        
-        uplaykeycount = 0
-        
-        my_file = open('Keys.txt', 'w')
-        
-        while uplaykeycount < uplaykeynumber : 
-            text_for_file = uplaygentwo(4)
-            print(text_for_file)
-            uplaykeycount += 1   
-            text_for_file += chr(10) + chr(13)
-            
-            my_file.write(text_for_file)
-        
-             
-             
-        my_file.close()        
-                    
+if keytype == "3" :
+    templateinput("YYY-YYY-YYYY")
+
+if keytype == "9" :
+    print("Напишите шаблон")
+    print("X - Только буквы")
+    print("Y - Только цифры")
+    print("Z - Буквы и цифры")
+    
+    unitype = input()
+    
+    templateinput(unitype)        
+    
+print(Fore.CYAN,"Ключи сохранены в файл Keys.txt")
